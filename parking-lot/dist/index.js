@@ -12,11 +12,12 @@ const v2 = vehicle_1.VehicleFactory.getInstance(types_1.ParkingSpotTypes.HANDICA
 // console.log(parkingLot.getGates());
 const gates = parkingLot.getGates();
 const gate = gates[0];
-console.log(parkingLot.showBoard());
 const ticket = parkingLot.getParkingTicket(v1, gate);
 console.log(ticket);
+console.log(parkingLot.showBoard());
 console.log(parkingLot.getParkingTicket(v2, gate));
-console.log(parkingLot.showBoard());
-//@ts-ignore
-parkingLot.removeVehicle(ticket);
-console.log(parkingLot.showBoard());
+setTimeout(() => {
+    //@ts-ignore
+    console.log(parkingLot.removeVehicle(ticket));
+    console.log(parkingLot.showBoard());
+}, 5000);

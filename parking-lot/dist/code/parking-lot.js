@@ -46,7 +46,8 @@ class ParkingLot {
     }
     removeVehicle(ticket) {
         const exit = ticket.gate.exit;
-        exit.validateTicket(ticket, this.spots, this.usedSpots);
+        const amount = exit.removeVehicle(ticket, this.spots, this.usedSpots);
+        return amount;
     }
     getGates() {
         return this.gates;

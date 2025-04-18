@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Gate = exports.GateManager = void 0;
+const cost_computation_js_1 = require("./cost-computation.js");
 const parking_spot_manager_js_1 = require("./parking-spot-manager.js");
 const ticket_js_1 = __importDefault(require("./ticket.js"));
 class Entrance {
@@ -23,9 +24,19 @@ class Exit {
     constructor(id) {
         this.id = id;
         this.parkingSpotManager = new parking_spot_manager_js_1.ParkingSpotManager();
+        this.cc = new cost_computation_js_1.CostComputation();
     }
-    validateTicket(ticket, spots, usedSpots) {
+    removeVehicle(ticket, spots, usedSpots) {
+        const amount = this.makePayment(ticket);
+        this.vacantSpace(ticket, spots, usedSpots);
+        return amount;
+    }
+    vacantSpace(ticket, spots, usedSpots) {
         this.parkingSpotManager.removeVehicleFromSpot(ticket.parkingSpot, spots, usedSpots);
+    }
+    makePayment(ticket) {
+        const amount = this.cc.getCurrentStrategy().price(ticket);
+        return amount;
     }
 }
 class Gate {

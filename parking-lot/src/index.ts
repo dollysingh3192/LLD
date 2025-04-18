@@ -12,17 +12,16 @@ const v2 = VehicleFactory.getInstance(ParkingSpotTypes.HANDICAPPED, "45678");
 const gates = parkingLot.getGates();
 const gate = gates[0];
 
-console.log(parkingLot.showBoard());
-
 const ticket = parkingLot.getParkingTicket(v1, gate);
 console.log(ticket);
+console.log(parkingLot.showBoard());
+
 console.log(parkingLot.getParkingTicket(v2, gate));
 
-console.log(parkingLot.showBoard());
-
+setTimeout(() => {
 //@ts-ignore
-parkingLot.removeVehicle(ticket);
-
-console.log(parkingLot.showBoard());
+    console.log(parkingLot.removeVehicle(ticket));
+    console.log(parkingLot.showBoard());
+}, 5000);
 
 

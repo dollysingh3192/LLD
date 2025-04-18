@@ -4,7 +4,7 @@ import { SpotsMap, UsedSpotsMap } from "./types";
 import { Vehicle } from "./vehicle";
 
 class ParkingSpotManager {
-  parkingSpotStrategyFactoryManager
+  parkingSpotStrategyFactoryManager: ParkingSpotStrategyFactoryManager
   constructor() {
     this.parkingSpotStrategyFactoryManager = new ParkingSpotStrategyFactoryManager();
   }
