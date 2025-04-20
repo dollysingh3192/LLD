@@ -1,0 +1,12 @@
+{
+    "name": "parking-lot",
+    "version": "1.0.0",
+    "description": "Parking Lot",
+    "scripts": {
+        "build": "tsc",
+        "start": "tsc && node dist/index.js"
+    },
+    "devDependencies": {
+        "typescript": "^5.8.3"
+    }
+}
